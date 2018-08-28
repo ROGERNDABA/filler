@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/ft_printf.h"
+#include "ft_printf.h"
 
 static void		ft_margin(t_flag lst, int len)
 {

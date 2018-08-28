@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/libft.h"
+#include "libft.h"
 
 static int		ft_return_value(int v)
 {

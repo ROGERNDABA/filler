@@ -6,11 +6,11 @@
 /*   By: Roger <rogerndaba@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 12:01:08 by Roger             #+#    #+#             */
-/*   Updated: 2018/08/02 08:13:43 by rmdaba           ###   ########.fr       */
+/*   Updated: 2018/07/16 12:01:36 by rmdaba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/libft.h"
+#include "libft.h"
 
 int		ft_getchar(void)
 {

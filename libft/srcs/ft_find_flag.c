@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/ft_printf.h"
+#include "ft_printf.h"
 
 static t_flag	ft_find_flag3(t_flag lst, int i, const char *fmt)
 {

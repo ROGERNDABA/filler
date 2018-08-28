@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/ft_printf.h"
+#include "ft_printf.h"
 
 size_t			ft_bit_len(wchar_t c)
 {

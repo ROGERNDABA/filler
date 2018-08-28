@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/ft_printf.h"
+#include "ft_printf.h"
 
 static void	ft_conv_nb(uintmax_t *nb, t_flag lst)
 {

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmdaba <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rmdaba <rmdaba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 13:42:52 by rmdaba            #+#    #+#             */
-/*   Updated: 2018/05/28 23:22:06 by rmdaba           ###   ########.fr       */
+/*   Updated: 2018/08/20 17:45:37 by rmdaba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/libft.h"
+#include "libft.h"
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+t_list	*ft_lstnew(void const *content, size_t data_size)
 {
 	t_list	*r;
 
@@ -20,17 +20,17 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		return (NULL);
 	if (content == NULL)
 	{
-		r->content = NULL;
-		r->content_size = 0;
+		r->data = NULL;
+		r->data_size = 0;
 	}
 	else
 	{
-		if (!(r->content = ft_memdup(content, content_size)))
+		if (!(r->data = ft_memdup(content, data_size)))
 		{
 			free(r);
 			return (NULL);
 		}
-		r->content_size = content_size;
+		r->data_size = data_size;
 	}
 	return (r);
 }

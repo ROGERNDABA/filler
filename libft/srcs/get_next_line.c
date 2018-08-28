@@ -6,12 +6,12 @@
 /*   By: rmdaba <rmdaba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 16:57:17 by rmdaba            #+#    #+#             */
-/*   Updated: 2018/08/06 09:15:01 by rmdaba           ###   ########.fr       */
+/*   Updated: 2018/08/19 05:44:03 by rmdaba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/get_next_line.h"
-# define MAX_SIZE_FD 100
+#include "get_next_line.h"
+#define MAX_SIZE_FD 100
 
 char			*ft_stock_the_new_line(char *str)
 {

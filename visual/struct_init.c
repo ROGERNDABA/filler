@@ -6,11 +6,23 @@
 /*   By: rmdaba <rmdaba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 15:11:37 by rmdaba            #+#    #+#             */
-/*   Updated: 2018/08/14 19:38:20 by rmdaba           ###   ########.fr       */
+/*   Updated: 2018/08/27 20:09:17 by rmdaba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "visualizer.h"
+
+void	norm(t_stuff *e, char *line)
+{
+	char	**s;
+
+	s = ft_strsplit(line, ' ');
+	e->dim_x = ft_atoi(s[1]);
+	e->dim_y = ft_atoi(s[2]);
+	free(s[0]);
+	free(s[1]);
+	free(s[2]);
+}
 
 t_stuff	*init_struct(t_stuff *e)
 {
@@ -20,20 +32,10 @@ t_stuff	*init_struct(t_stuff *e)
 	e->dim_y = 0;
 	e->dim_p_x = 0;
 	e->dim_p_y = 0;
-	e->start_x = 0;
-	e->start_y = 0;
-	e->end_x = 0;
-	e->end_y = 0;
+	e->score_o = 0;
+	e->score_x = 0;
+	e->pl1 = NULL;
+	e->pl2 = NULL;
 	e->map = NULL;
 	return (e);
-}
-
-t_tok	*init_struct2(t_tok *token)
-{
-	token = (t_tok *)malloc(sizeof(t_tok));
-	token->off_x = 0;
-	token->off_y = 0;
-	token->trim_x = 0;
-	token->trim_y = 0;
-	return (token);
 }

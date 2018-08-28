@@ -1,78 +1,91 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmdaba <rmdaba@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/27 07:04:11 by rmdaba            #+#    #+#             */
+/*   Updated: 2018/08/28 08:05:37 by rmdaba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
-#include <stdio.h>
 
-void solve(t_stuff *e, t_tok *token)
+static void			ft_get_player(int fd, t_fill *board)
 {
+	char			*line;
+	int				ret;
 
-	int i = e->start_x;
-	int j;
-	(e->player == 1) ? start_pos(e, e->map, 'O') : start_pos(e, e->map, 'X');
-	(e->player == 1) ? find_pos(e, 'O') : find_pos(e, 'X');
-	e->start_x = e->end_x;
-	e->start_y = e->end_y;
-	while (i < e->dim_x)
+	ret = get_next_line(fd, &line);
+	if (ret == 0)
+		exit(0);
+	if (ft_strstr(line, "$$$"))
 	{
-		j = e->start_y;
-		while (j < e->dim_y)
-		{
-			ft_putnbr(e->start_x - token->off_x);
-			write(1, " ", 1);
-			ft_putnbr(e->start_y - token->off_y);
-			write(1, "\n", 1);
-			j++;
-		}
-		i++;
+		if (ft_strstr(line, "p1"))
+			board->player = 'O';
+		else if (ft_strstr(line, "p2"))
+			board->player = 'X';
 	}
-	//e->start_x = token->trim_x;
-	//e->start_y = token->trim_y;
+	(ret > 0) ? free(line) : 0;
 }
 
-/*
-void algorithm(int x0, int y0, int x1, int y1)
+static void			free_cord_struct(t_fill *board)
 {
+	t_cord			*dell;
 
-}*/
+	while (board->head != NULL)
+	{
+		dell = board->head;
+		board->head = board->head->next;
+		free(dell);
+	}
+	board->head = NULL;
+	board->last = NULL;
+}
 
-
-
-void find_pos(t_stuff *e, char c)
+static void			free_fill_struct(t_fill *board)
 {
-	int i;
-	int j;
+	int				i;
 
 	i = 0;
-	while (i < e->dim_x)
+	free(board->x_p);
+	free(board->y_p);
+	board->x_p = NULL;
+	board->y_p = NULL;
+	while (board->map[i] != NULL)
 	{
-		j = 0;
-		while (j < e->dim_y)
-		{
-
-			if (e->map[i][j] == c)
-			{
-				e->end_x = i;
-				e->end_y = j;
-			}
-			j++;
-		}
+		ft_strdel(&board->map[i]);
 		i++;
 	}
+	free(board->map);
+	board->map = NULL;
+	i = 0;
+	while (board->token[i] != NULL)
+	{
+		ft_strdel(&board->token[i]);
+		i++;
+	}
+	free(board->token);
+	board->token = NULL;
+	free_cord_struct(board);
 }
 
-int main()
+int					main(void)
 {
-	t_stuff *e = NULL;
-	t_tok *token = NULL;
+	t_fill			board;
+	int				fd;
 
-	e = init_struct(e);
-	token = init_struct2(token);
-	get_info(e);
+	fd = 0;
+	ft_get_player(fd, &board);
 	while (1)
 	{
-		get_map(e);
-		get_tok(e);
-		token_trim(token, e);
-		solve(e, token);
-		free(e->map);
+		board.map = get_map(fd, &board);
+		board.token = get_token(fd, &board);
+		board.head = NULL;
+		board.last = NULL;
+		init_algotithm(&board);
+		free_fill_struct(&board);
 	}
 	return (0);
 }

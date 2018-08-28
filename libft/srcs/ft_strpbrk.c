@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmdaba <rmdaba@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rmdaba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 02:21:24 by rmdaba            #+#    #+#             */
-/*   Updated: 2018/08/14 15:13:27 by rmdaba           ###   ########.fr       */
+/*   Updated: 2018/07/19 02:21:26 by rmdaba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/libft.h"
+#include "libft.h"
 
 char	*ft_strpbrk(const char *s, const char *charset)
 {
